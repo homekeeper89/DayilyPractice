@@ -1,0 +1,73 @@
+<script> const log = console.log</script>
+# 제너레이터 : 이터레이터 이자, 이터레이터를 생성하는 함수
+
+<script>
+    // 일반함수에 * 를 붙인다
+    // 제너레이터는 이터레이터를 문장으로 만드는 것.
+    // 제너레이터를 통해서 이터레이터를 쉽게 만들 수 있다.
+    function *gen(){
+        yield 1;
+        yield 2;
+        yield 3;
+        
+    }
+    let iter = gen(); // Symbol.iterator()를 가지고 있다.
+    log(iter.next()) // 1
+    log(iter.next()) // 2
+    log(iter.next()) // 3
+    log(iter.next()) // undefined or return이 있으면 reture이 나옴. 다만 for of 사용시에는 안나온다.
+</script>
+<script>
+    // 홀수만 발생시키는 이터레이터를 만들자
+    function *odds(){
+        yield 1;
+        yield 3;
+        yield 5;
+    }
+    let iter2 = odds();
+    log(iter2.next()); // 1 ...
+
+    function *infinity(i=0){
+        // 무한히 next를 할 수 있다.
+        while(true) yield i++;
+    }
+    function *odds(limit){
+        for(let i = 0; i<limit; i++){
+            if(i % 2) yield i;
+        }
+    }
+    let iter2 = odds(10);
+    log(iter2.next()); // 1 ...
+
+</script>
+
+<script>
+    function *limit(l, iter){
+        for(const a of iter){
+            yield a;
+            if (a == l) return;
+        }
+    }
+
+    function *infinity(i=0){
+        // 무한히 next를 할 수 있다.
+        while(true) yield i++;
+    }
+
+    function *odds(limit){
+        for(const a of infinity(1)){
+            if(i % 2) yield i;
+            if(a==limit) return;
+        }
+    }
+
+    let ite4 = limit(4, [1,2,3,4,5,6])
+    log(ite4.next())
+
+
+    function *odds(l){
+        for(const a of limit(l, infinity(1))){
+            if(i % 2) yield i;
+        }
+    }
+</script>
