@@ -30,3 +30,18 @@ const products = [
     }
     log(names)
 </script>
+<script>
+    // map함수는 이터러블 프로토콜을 따라므로 다형성이 매우 높다
+    //log(document.querySelectorAll('*').map(el => el.nodeName)); // 얘는 안됨, querySelectall은 어레이를 상속받았기 때문
+    log(map(el => el.nodeName, document.querySelectorAll('*'))) // 얘가 되는 이유는 querySelectorAll이 이터러블 프로토콜을 따르기 때문, Symbol.iterator가 있다!
+    
+    function *gen(){
+        yield 2;
+        if (false) yield 3;
+        yield 4;
+    }
+
+    log(map(a=> a*a, gen())) // 이터러블 프로토콜만 따르면 맵 함수는 사용 가능하다
+    // 또한 문장(제너레이터) 역시도 사용 가능하다. => 사실상 대부분의 것들에 대해 사용가능
+
+</script>
