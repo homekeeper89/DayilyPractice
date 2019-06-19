@@ -43,5 +43,11 @@ const products = [
 
     log(map(a=> a*a, gen())) // 이터러블 프로토콜만 따르면 맵 함수는 사용 가능하다
     // 또한 문장(제너레이터) 역시도 사용 가능하다. => 사실상 대부분의 것들에 대해 사용가능
+</script>
+<script>
+let m = new Map();
+m.set('a', 10);
+m.set('b', 20);
+log(map(([k, a])=> [k, a*2], m));
 
 </script>
