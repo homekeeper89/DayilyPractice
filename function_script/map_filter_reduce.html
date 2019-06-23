@@ -17,7 +17,8 @@ log(
     );
 // 위 아래 내용은 모두 같다
 log(
-    reduce(add,
+    reduce(
+    add,
     filter(n => n<20000, 
     map(p => p.price, products)
     )));
@@ -36,5 +37,50 @@ const go = (...args)=> reduce((a, f) => f(a), args);
         a=> a+100, 
         log
     )
+// pipe 함수 : 함수를 리턴하는 함수, go 함수는 즉시 어떤 값을 평가하는데 사용
+// pipe는 합성된 함수를 만든다
+
+const pipe = (f, ... fs) => (...as) => go(f(...as), ...fs); // 함수를 리턴하는 함수
+const f = pipe(
+    (a, b) => a+b,
+    a=> a+1,
+    a=> a+10,
+    a=> a+100, 
+) // 3개의 함수를 축약하는
+
+log(f(0))
+
+log(
+    reduce(
+    add,
+    filter(n => n<20000, 
+    map(p => p.price, products)
+)));
+
+go(
+    products,
+    products => filter(p => p.price <20000, products),
+    products => map(p => p.price, products),
+    price => reduce(add, prices),
+    log
+)
+</script>
+<script>
+// curry 함수, 받아둔 함수를 원하는 시험에 사용
+// 원하는 
+
+// 인자들을 받는다, 인자 갯수를 세서 2개 이상이면 실행 아니면 
+// 다시 인자를 받은후 합쳐서 실행
+const curry = f => 
+    (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
+
+const mult = curry((a, b) => a * b);
+log(mult(1)) // 결과는 함수 하나
+log(mult(1)(2)) // 결과 나옴
+
+const mult3 = mult(3); // 미리 함수를 만들어 놓고 실행
+log(mult3(2))
+// curry 함수를 위 함수들에 적용 가능함..
+
 
 </script>
