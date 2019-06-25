@@ -1,0 +1,85 @@
+<script>const log = console.log</script>
+
+# 기존과 달라진 리스트 순회 방법
+
+<script>
+// 기존 방식
+const list = [1,2,3];
+for(var i = 0; i<list.length; i++){
+    log(list[i])
+}
+// 선언적 방식으로 바뀜, 간결하게.
+for (const a of list){
+    log(a)
+}
+</script>
+
+# Array 통해 알아보기
+<script>
+log('Arr----')
+const arr = [1,2,3];
+for (const a of arr){
+    log(a)
+}
+
+</script>
+
+<script>
+log('set-----')
+const set = new Set([1,2,3]);
+for (const a of set) log(a)
+</script>
+
+<script>
+log('Map-------')
+const map = new Map([['a', 1], ['b', 2], ['c', 3]])
+for (const m of map) log(m)
+</script>
+
+# 기존의 Array 배열 방식의 for는 키:밸류를 통해서 for를 돌림
+
+# 심볼 이터레이터
+# arr[Symbol.iterator] 에 뭐가 있다
+# arr[Symbol.iterator] = null 로 하면 for가 돌아가지 않는다.
+# set[Symbol.iterator], map[Symbol.iterator] 모두 동일함.
+
+# 이터러블이란 : 이터레이터를 리턴하는 [Symbol.iterator]를 가진 값
+# arr[Symbol.iterator] 에서 뭔가가 나오는 이유
+# arr[Symbol.iterator]() 를 실행하게 되면 이터레이터를 리턴한다
+# 이터레이터: {value, done} 객체를 리턴하는 next()를 가진 값
+# iterator.next() 를 하면 {value : '', done:true} 등으로 나온다.
+# done이 트루가 되면 for문을 빠져나온다
+# for, of가 출력하는 값은 value임
+# 이터러블/이터레이터 프로토콜 : for, of 전개 연산자 등과 함께 동작하도록 한 규약
+# array는 이터러블, 이터레이터 프로토콜을 따른다.
+
+# map.keys() 는 MapIterator를 리턴한다.
+# map.values() 
+# map.entries()
+
+# 사용자 정의 이터러블 알아보기
+<script>
+    // 이터러블 객체는 Symbol.iterator 메서드를 사용해야 하며 next() 메서드가 있어야하고 return으로 value, done을 줘야한다
+    const useriter = {
+        [Symbol.iterator](){
+            let i = 3;
+            return {
+                next(){
+                    return i==0? {done:true} : {value:i--, done:false}
+                },
+                [Symbol.iterator](){
+                    return this; // 자기 자신을 리턴함으로서 중간에서부터도 시작이 가능하다, 이터레이터도 이터러블이 가능하게 만드는 것이 핵심
+                }
+            }
+        }
+    }
+    let iter = useriter[Symbol.iterator]();
+    log(iter.next())
+    for(const a of useriter) log(a)
+</script>
+
+# 전개 연산자
+<script>
+const a = [1,2];
+log(...a, ...[3,4]);
+</script>

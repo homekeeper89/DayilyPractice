@@ -1,0 +1,24 @@
+<script>const log = console.log</script>
+
+<script>
+    const apply1 = (f,b) =>f(1, b);
+    const add2 = (a, b)=>a+2+b; // 13이 나옴
+    log(apply1(add2, 10));
+
+    const times = (f, n) => {
+        let i = -1;
+        while(++i < n) f(i);
+    }
+
+    times(a => log(a+10), 3)
+</script>
+
+<script>
+    // 함수가 함수를 리턴하고 있다
+    // 클로저 : b => a+b가 a를 계속, 함수이자 a를 기억하는 클로져
+    // 함수가 만들어질때의 환경, 객체를 통칭해서 말하는
+    const addMaker = a => b => a+b;
+    const add10 = addMaker(10);
+    log(add10); // b => a+b, 함수 리턴
+    log(add10(10)); // 20이 나옴
+</script>

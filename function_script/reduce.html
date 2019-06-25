@@ -1,0 +1,48 @@
+<script> const log = console.log;</script>
+
+<script>
+// 값을 축약해나간다
+    const nums = [1,2,3,4,5];
+    let total = 0;
+    for (const n of nums){
+        total += n
+    }
+    log(total)
+
+    const reduce = (f, acc, iter) =>{
+        for (const a of iter){
+            acc = f(acc, a);
+        }
+        return acc
+    }
+    const add = (a, b) => a+b;
+    log(reduce(add, 0, [1,2,3,4,5])) // 함수, 시작값, array
+    // add(add(add(add(0,1),2),3,4)...
+
+    // 시작하는 값(acc) 를 생략 할 수 있다 -> array의 0번 인덱스를 기본으로 한다
+
+    const reduce2 = (f, acc, iter) =>{
+        if(!iter){
+            iter = acc[Symbol.iterator](); // acc를 이터레이터로 변한
+            acc = iter.next().value;
+        }
+        for (const a of iter){
+            acc = f(acc, a);
+        }
+        return acc
+    }
+    log(reduce2(add, [1,2,3,4,5]))
+
+    const products = [
+        {name:'반팔티', price:15000},
+        {name:'긴팔티', price:20000},
+        {name:'핸드폰케이스', price:15000},
+        {name:'후드티', price:30000},
+        {name:'바지', price:25000}
+    ]
+    log(
+        reduce2(
+            (total_price, product) => total_price + product.price, 
+            0, 
+            products));
+</script>
