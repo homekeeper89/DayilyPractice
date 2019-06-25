@@ -1,0 +1,37 @@
+<script src = "./lib/fx.js"> </script>
+
+<script>
+    const products = [
+        {name:'반팔티', price:15000},
+        {name:'긴팔티', price:20000},
+        {name:'핸드폰케이스', price:15000},
+        {name:'후드티', price:30000},
+        {name:'바지', price:25000}
+    ]
+</script>
+<script>
+    // go 개념 : 인자들을 받아서 하나로 축약
+    const go = (...args) =>reduce((a, f)=>f(a),  args)
+    // reduce는 함수와, args를 받는다. 
+    go(
+        0,
+        a => a+1,
+        a => a+10,
+        a => a+ 100,
+        log
+    )
+
+    const pipe = (...fs) => (a) => go(a, ...fs)
+    
+    const f = pipe(
+        a => a+1,
+        a => a+10,
+        a => a+100,
+    ) // 3개의 함수(주어진 함수)를 합쳐서..
+    
+    f(0)
+</script>
+<script>
+// pipe는 함수를 리턴한다.
+
+</script>
