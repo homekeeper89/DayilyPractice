@@ -42,7 +42,7 @@
         log
     )
 
-    const pipe = (f, ...fs) => (...as) => go(f(...a), ...fs)
+    const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs)
     // 첫번째 함수만 꺼내고, 해당 함수를 여러개 받은 인자(...as) 활용하게 한다
     const f = pipe(
         (a, b)=> a+b,

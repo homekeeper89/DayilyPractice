@@ -53,6 +53,7 @@ go(
         prices => reduce(add)(prices),
         log
 )
+
 go(
     products,
     filter(p=>p.price <20000),
@@ -60,4 +61,48 @@ go(
     reduce(add),
     log
 )
+</script>
+
+<script>
+// 함수조합으로 함수 만들기
+// 중복을 제거하자
+
+go(
+    products,
+    filter(p=>p.price <20000),
+    map(p=>p.price),
+    reduce(add),
+    log
+)
+
+go(
+    products,
+    filter(p=>p.price >= 20000),
+    map(p=>p.price),
+    reduce(add),
+    log
+)
+
+const total_price = pipe(
+    map(p=>p.price),
+    reduce(add)
+)
+
+const base_total_price = predi => pipe(
+    filter(predi),
+    total_price
+)
+
+go(
+    products,
+    base_total_price(p=>p.price < 20000),
+    log
+)
+
+go(
+    products,
+    base_total_price(p =>p.price >= 20000),
+    log
+)
+
 </script>
