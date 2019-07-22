@@ -77,10 +77,22 @@ log(take(5, L.range(100))) // 0,1,2,3,4 이렇게나옴
         take(5),
         log
     )
-
+    // 제너레이터가 아닌 이터레이터프로토콜을 실행하는 타이밍에 어레이가 작동
     go(
         L.range(10000),
         take(5),
         log
     )
     </script>
+# take
+<script>
+const take = (l, iter)=>{
+    let res = [];
+    for (const a of iter){
+        res.push(a);
+        if(res.length == l) return res
+    }
+    return res
+}
+log(take(5, range(100))); // 100개중 5개만 
+</script>
