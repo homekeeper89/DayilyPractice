@@ -27,4 +27,12 @@ go(range(10),
     L.filter = function *(f, iter){
         for(const a of iter) if (f(a)) yield a;
     }
+    go(L.range(10),
+        L.map(n=> n+10),
+        L.filter(n=>n%2),
+        take(2),
+        log
+    )
+    // 기존과 다르게 take > L.filter > L.map > L.range >L.map > L.filter > take
+    // 평가를 기다리기에 
 </script>
