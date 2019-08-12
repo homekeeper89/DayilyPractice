@@ -39,7 +39,9 @@ function onMouseUp(event){
     stopPainting()
 }
 function handleColorClick(event){
-    console.log(event.target.style)
+    const color = event.target.style.backgroundColor;
+    console.log(color)
+    ctx.strokeStyle = color
 }
 
 if(canvas){
