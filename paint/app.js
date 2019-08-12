@@ -1,10 +1,11 @@
 const canvas = document.getElementById("jsCanvas")
 const ctx = canvas.getContext("2d");
+const colors = document.getElementsByClassName("jsColor")
 
 canvas.width = 700;
 canvas.height = 700;
 
-ctx.strokeStyle="#2c2c2c";
+ctx.strokeStyle="#2c2c2c"; // 컨버스에 그리는 색상
 ctx.lineWidth=2.5;
 
 function startPainting(){
@@ -37,6 +38,9 @@ function onMouseDown(event){
 function onMouseUp(event){
     stopPainting()
 }
+function handleColorClick(event){
+    console.log(event.target.style)
+}
 
 if(canvas){
     canvas.addEventListener('mousemove',  onMouseMove)
@@ -44,3 +48,7 @@ if(canvas){
     canvas.addEventListener('mouseup', stopPainting)
     canvas.addEventListener('mouseleave', stopPainting)
 }
+
+console.log(Array.from(colors)); // Array.from은 list를 만든다
+
+Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick))
