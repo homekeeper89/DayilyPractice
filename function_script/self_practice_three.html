@@ -7,21 +7,18 @@
 </body>
 <script>
 const log = console.log;
-const reduce = (f, acc, iter)=>{
-    if(!iter){
-        iter = acc[Symbol.iterator]()
-        acc = iter.next().value
-    }
-    for(const a of iter){
-        log(a, acc, iter.next())
-        acc = f(acc, a)
-    }
-    return acc
+const reduce = (f, acc, iter) =>{
+        if(!iter){
+            iter = acc[Symbol.iterator](); // acc를 이터레이터로 변한
+            acc = iter.next().value;
+        }
+        for (const a of iter){
+            acc = f(acc, a);
+        }
+        return acc
 }
 const go = (...args)=>
-    reduce(
-        (a,f)=>f(a), args
-)
+    reduce((a,f)=>f(a), args)
 
 
 const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs);
@@ -38,7 +35,7 @@ const f = pipe(
 //     a=> a+10,
 //     a=> a+100
 // ))
-log(f(0, 1))
+// log(f(0,1))
 
 //pipe_2 는 함수를 리턴해야하므로
 const pipe_2 = (...fs) => (a) => go(a, ...fs)
@@ -48,5 +45,37 @@ const fa = pipe_2(
     a => a+2,
     a => a+3
 )
-log(fa(0))
+// log(fa(0))
+
+//pipe_3는 pipe_2에 원하는 형태의 함수를 시작점으로 하고싶어함
+
+const pipe_3 = (f, ...fs) => (...as) => go(f(...as), ...fs);
+
+const ffa = pipe_3(
+    (a,b) => a+b,
+    a => a+10,
+    a => a+100
+)
+// log(ffa(0,1))
+
+const pipe_real = (f, ... fs) => (...as) => go(f(...as), ...fs); // 함수를 리턴하는 함수
+const f_real = pipe_real(
+    (a, b) => a+b,
+    a=> a+1,
+    a=> a+10,
+    a=> a+100, 
+) // 3개의 함수를 축약하는
+
+log(f(0,1))
+
+const pipe22 = (...fs) => (a) => go(a, ...fs)
+const f0 = pipe22(
+    a => a+1,
+    a => a+10,
+    a => a+100
+)
+
+log(f0(0))
+
+
 </script>
