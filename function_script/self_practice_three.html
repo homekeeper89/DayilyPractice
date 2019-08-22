@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <title>SelfHello</title>
+</head>
+<body>
+    <h2>Hello</h2>
+</body>
+<script>
+const log = console.log;
+const reduce = (f, acc, iter)=>{
+    if(!iter){
+        iter = acc[Symbol.iterator]()
+        acc = iter.next().value
+    }
+    for(const a of iter){
+        log(a, acc, iter.next())
+        acc = f(acc, a)
+    }
+    return acc
+}
+const go = (...args)=>
+    reduce(
+        (a,f)=>f(a), args
+)
+
+
+const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs);
+
+const f = pipe(
+    (a,b) => a+b,
+    a=> a+1,
+    a=> a+10,
+    a=> a+100
+)
+// log(go(
+//     0,
+//     a=> a+1,
+//     a=> a+10,
+//     a=> a+100
+// ))
+log(f(0, 1))
+
+//pipe_2 는 함수를 리턴해야하므로
+const pipe_2 = (...fs) => (a) => go(a, ...fs)
+
+const fa = pipe_2(
+    a => a+1,
+    a => a+2,
+    a => a+3
+)
+log(fa(0))
+</script>

@@ -82,5 +82,53 @@ go(
     log
 )
 
+go(
+    0,
+    a => a+1,
+    a => a+10,
+    a => a+100,
+    log
+)
 
+const go = (...args) =>{
+    reduce(
+        (a, f)=>f(a),
+        args
+    )
+}
+
+go(
+    0,
+    a=>a+1,
+    a=>a+2,
+    a=>a+100,
+    log
+)
+
+const go = (...args)=>{
+    reduce(
+        (a, f) => f(a),
+        args
+    )
+}
+go(
+    0,
+    a=>a+1,
+    a=>a+100,
+    a=>a+1000,
+    log
+)
+const go = (...args)=>{
+    reduce(
+        (a,f)=>f(a),
+        args
+    )
+}
+go(
+    0,
+    a=>a+1,
+    a=>a+10,
+    a=>a+11,
+    log
+)
 </script>
