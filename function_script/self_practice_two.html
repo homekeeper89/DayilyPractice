@@ -29,6 +29,7 @@ const reduce = (f, acc, iter)=>{
         acc = iter.next().value;
     }
     for (const a of iter){
+        log(a, acc, f, f(acc, a))
         acc = f(acc, a)
     }
     return acc
@@ -46,6 +47,7 @@ const products = [
 let price = 30000
 const add = (a,b)=> a+b;
 log(filter(x => x.price < price, products))
+// 30000이하의 상품들만 모아서 가격 합산함
 log(
     reduce(
         add, 
@@ -54,5 +56,31 @@ log(
             )
         )
     )
-log(map(x=>x.price, products))
+log(
+    reduce(
+        add,
+        filter(m => m < price,
+            map(m => m.price, products)
+            )
+        )
+    )
+</script>
+<script>
+const go = (...args)=>{
+    log('in go', args)
+    reduce(
+        (a,f)=>f(a), 
+        args
+        );
+}
+
+go(
+    0,
+    a => a+1,
+    a=> a+10,
+    a => a+100,
+    log
+)
+
+
 </script>
