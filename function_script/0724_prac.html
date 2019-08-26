@@ -40,11 +40,21 @@ go(range(10),
 // 0821 돌아온 탕야
 // 데이터를 컬럼별로 해도 같은 결과를 만들어 낸다.
 // 사용하는 함수가 순수함수이면 어떤 
+
+const join = curry((sep=',', iter) =>
+    reduce((a,b) =>`${a}${sep}${b}`, iter));
+
 const queryStr = pipe(
     Object.entries,
     map(([k, v])=>`${k}=${v}`),
-    reduce((a,b)=>`${a}&${b}`)
+    join('&')
 );
 
 log(queryStr({limit:10, offset:10, type:'notice'}))
+function *a(){
+    yield 10;
+    yield 20;
+    yield 30;
+}
+log(join('-', a()))
 </script>
