@@ -1,5 +1,3 @@
-number = [5,3,8,6,7,2]
-
 def bubble_sort(num_list):
     temp = 0
     for index in range(1, len(num_list)):
@@ -13,6 +11,4 @@ def bubble_sort(num_list):
 
 
     return num_list
-if __name__ == '__main__':
-    print(bubble_sort(number))
 
