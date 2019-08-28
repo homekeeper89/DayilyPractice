@@ -29,8 +29,18 @@ def selection_sort(num_list):
         num_list[position] = value
     return num_list
 
-
-        
+def insertion_sort(num_list):
+    # 전체 원소 갯수 만큼 순회한다. 1번째부터
+    # 0번 인덱스가 정렬된 리스트라고 가정
+    # 비교 리스트 횟수만큼 돌거나 작으면 멈춤
+    # 이게 왜 되지??
+    for i in range(len(num_list)):
+        for v in range(i, 0, -1):
+            if num_list[v-1] > num_list[v]:
+                temp = num_list[v]
+                num_list[v] = num_list[v-1]
+                num_list[v-1] = temp
+    return num_list
 
 
 
