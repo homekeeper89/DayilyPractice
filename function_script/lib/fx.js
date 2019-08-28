@@ -30,3 +30,12 @@ const reduce = curry((f, acc, iter)=>{
     }
     return acc
 })
+
+const take = curry((l, iter)=>{
+    let res = [];
+    for (const a of iter){
+        res.push(a)
+        if(res.length == l) return res;
+    }
+    return res;
+})

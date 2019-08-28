@@ -58,3 +58,23 @@ function *a(){
 }
 log(join('-', a()))
 </script>
+<script>
+//0828 목요일 take, find,
+const users = [
+    {age:32},
+    {age:31},
+    {age:30},
+    {age:28},
+    {age:19},
+    {age:21},
+];
+const find = curry((f, iter)=>go(
+    iter,
+    filter(f),
+    take(1),
+    ([a]) =>a
+))
+
+log(find(u=>u.age<30), users)
+
+</script>
