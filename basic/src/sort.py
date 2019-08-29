@@ -43,4 +43,30 @@ def insertion_sort(num_list):
     return num_list
 
 
+def bubble_sort_two(num_list):
+    for i in range(len(num_list)):
+        for j in range(i+1,len(num_list)):
+            if num_list[i] > num_list[j]:
+                temp = num_list[j]
+                num_list[j] = num_list[i]
+                num_list[i] = temp
+    
+    return num_list
+
+def selection_sort_two(num_list):
+    for i in range(len(num_list)):
+        min_num_index = i
+        for j in range(i, len(num_list)):
+            if num_list[j] > num_list[min_num_index]:
+                min_num_index = j
+        temp = num_list[min_num_index]
+        num_list[min_num_index] = num_list[i]
+        num_list[i] = temp
+    return num_list
+
+
+
+
+
+
 
