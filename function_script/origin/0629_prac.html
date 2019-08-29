@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML 출력해보기 - 장바구니</title>
+    <script src ="./lib/fx.js"></script>
+</head>
+<div id="cart">
+
+</div>
+<script>
+    const products = [
+        {name:'반팔티', price:15000, quantity:1},
+        {name:'긴팔티', price:20000, quantity:2},
+        {name:'핸드폰케이스', price:15000, quantity:3},
+        {name:'후드티', price:30000, quantity:4},
+        {name:'바지', price:25000, quantity:5}
+    ]
+    const add = (a,b) => a+b;
+    
+    // 추상화 레벨 높이기 > products에 종속적인것을 벗어나서
+    const sum = (f, iter) =>go(
+        iter,    
+        map(f),
+        reduce(add)
+    )
+    log(sum(p=>p.quantity, products))
+    
+    const tot_q = products => sum(p=>p.quantity, products)
+    const tot_p = products => sum(p=>p.quantity * p.price , products)
+    
+    // sum에 curry 씌우기
+    const sum_two = curry((f, iter) =>go(
+        iter,    
+        map(f),
+        reduce(add)
+    ))
+    const tot_q = products => sum_two(p=>p.quantity)(products)
+    const tot_qq = sum_two(p=>p.quantity)
+    log(tot_qq(products))
+    // 1. 총 수량 뽑기
+    // const total_quantity = products => go(products,
+    //     map(p=>p.quantity),
+    //     reduce((a,b) => a+b)
+    // )
+    const total_quantity =pipe(
+        map(p=>p.quantity),
+        reduce((a,b) => a+b)
+    )
+    log(total_quantity(products))
+    // 2
+    const total_price = pipe(
+        map(p=>p.price * p.quantity),
+        reduce((a,b)=> a+b)
+    )
+    log(total_price(products))
+</script>
+</html>

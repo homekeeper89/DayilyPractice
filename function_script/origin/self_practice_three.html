@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>
+    <title>SelfHello</title>
+</head>
+<body>
+    <h2>Hello</h2>
+</body>
+<script>
+const log = console.log;
+
+const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs);
+
+const f = pipe(
+    (a,b) => a+b,
+    a=> a+1,
+    a=> a+10,
+    a=> a+100
+)
+// log(go(
+//     0,
+//     a=> a+1,
+//     a=> a+10,
+//     a=> a+100
+// ))
+// log(f(0,1))
+
+//pipe_2 는 함수를 리턴해야하므로
+const pipe_2 = (...fs) => (a) => go(a, ...fs)
+
+const fa = pipe_2(
+    a => a+1,
+    a => a+2,
+    a => a+3
+)
+// log(fa(0))
+
+//pipe_3는 pipe_2에 원하는 형태의 함수를 시작점으로 하고싶어함
+
+const pipe_3 = (f, ...fs) => (...as) => go(f(...as), ...fs);
+
+const ffa = pipe_3(
+    (a,b) => a+b,
+    a => a+10,
+    a => a+100
+)
+// log(ffa(0,1))
+
+const pipe_real = (f, ... fs) => (...as) => go(f(...as), ...fs); // 함수를 리턴하는 함수
+const f_real = pipe_real(
+    (a, b) => a+b,
+    a=> a+1,
+    a=> a+10,
+    a=> a+100, 
+) // 3개의 함수를 축약하는
+
+// log(f(0,1))
+
+const pipe22 = (...fs) => (a) => go(a, ...fs)
+const f0 = pipe22(
+    a => a+1,
+    a => a+10,
+    a => a+100
+)
+
+// log(f0(0))
+// go 함수는 결과를 만들어 내고, pipe는 함수들을 종합한다
+// curry 함수
+// 함수를 받아서 함수를 리턴,
+const cu = f => (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
+// 인자를 받아서 
+const curry = f => 
+        (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
+const multi = curry((a,b)=> a*b)
+log(multi)
+log(multi(1))
+// log(multi(1))
+// log(multi(1)(2))
+// const multi2 = multi(3)
+// log(multi2(4))
+</script>
+<script>
+    const products = [
+    {name:'반팔티', price:15000},
+    {name:'긴팔티', price:20000},
+    {name:'핸드폰케이스', price:15000},
+    {name:'후드티', price:30000},
+    {name:'바지', price:25000}
+];
+const reduce = curry((f, acc, iter) =>{
+        if(!iter){
+            iter = acc[Symbol.iterator](); // acc를 이터레이터로 변한
+            acc = iter.next().value;
+        }
+        for (const a of iter){
+            acc = f(acc, a);
+        }
+        return acc
+})
+
+const go = (...args)=>
+    reduce((a,f)=>f(a), args)
+
+    const filter = curry((f, iter)=>{
+        let res = []
+        for (const a of iter){
+            if(f(a)) res.push(a)
+        }
+        return res
+    })
+    const map = curry((f, iter)=>{
+        let res = []
+        for(const a of iter){
+            res.push(f(a))
+        }
+        return res
+    })
+    const add = (a,b) => a+b
+
+    go(
+        products,
+        products => filter(p => p.price < 20000)(products),
+        products => map(p => p.price)(products),
+        prices => reduce(add, prices),
+        log
+    )
+    // 인자들을 받는 함수를 curry를 사용하면 인자를 모두 한번에 받을 필요가 없음
+    // filter의 경우도 f, iter 이렇게 두개를 받아야하는데, 이를 curry 함수를 래핑함으로써
+    // filter(f)(iter) 가 가능함
+    // a => f(f')(a) 구조이고 이는 곧 받는 인자를 바로 준다는 뜻이니까
+    // f(f') 로 요약이 가능
+
+
+</script>
