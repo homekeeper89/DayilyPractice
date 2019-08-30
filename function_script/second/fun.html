@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <script src = "../lib/fx.js"> </script>
+    <title>SelfHello</title>
+</head>
+<body>
+    <h2>Hello</h2>
+</body>
+<script>
+const products = [
+    {name:'반팔티', price:15000},
+    {name:'긴팔티', price:20000},
+    {name:'핸드폰케이스', price:15000},
+    {name:'후드티', price:30000},
+    {name:'바지', price:25000}
+];
+// 0830 시작
+// 중복된 부분 함수화 해서 간단히 할 수 있다
+const total_price = pipe(
+    map(p=>p.price),
+    reduce(add)
+)
+
+const base_total_price = predi => pipe(
+    filter(predi),
+    total_price
+)
+
+go(
+    products,
+    base_total_price(p=>p.price < 20000),
+    log
+)
+// 0830 끝
+
+</script>
