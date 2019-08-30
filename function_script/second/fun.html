@@ -32,5 +32,63 @@ go(
     log
 )
 // 0830 끝
+// 0831 총수량 총 가격
+const products_with_quantity = [
+    {name:'반팔티', price:15000, quantity:1},
+    {name:'긴팔티', price:20000, quantity:2},
+    {name:'핸드폰케이스', price:15000, quantity:3},
+    {name:'후드티', price:30000, quantity:4},
+    {name:'바지', price:25000, quantity:5}
+]
+// 0831 장바구니 총 수량 뽑기
+const total_quantity = products_with_quantity =>go(
+    products_with_quantity,
+    map(p=>p.quantity),
+    reduce((a,b)=>a+b),
+)
+log(total_quantity(products_with_quantity))
+
+// products 넣는 부분이 같아서 pipe로 
+const pipe_total = pipe(
+    map(p=>p.quantity),
+    reduce((a,b)=>a+b)
+)
+log(pipe_total(products_with_quantity))
+
+// 합산 금액
+const total_price_pipe = pipe(
+    map(p=>p.price * p.quantity),
+    reduce((a,b)=> a+b)
+)
+log(total_price_pipe(products_with_quantity))
+
+// 합산금액과 quantity 계산하는 부분은 map 제외하고 완전 똑같다.
+const sum = (f, iter)=>go(
+    iter,    
+    map(f),
+    reduce((a,b)=>a+b)
+)
+
+log(sum(p=>p.quantity, products_with_quantity))
+log(sum(p=>p.quantity * p.price, products_with_quantity))
+
+// curry를 활용하면 더 간결한 함수가 만들어진다.
+const sum_curry = curry((f, iter)=>go(
+    iter,    
+    map(f),
+    reduce((a,b)=>a+b)
+))
+
+const total_curry = sum_curry(p=>p.quantity)
+
+log(total_curry(products_with_quantity))
+
+log(sum_curry(u => u.age,
+    [
+        {age:30},
+        {age:26},
+        {age:27}
+    ]
+))
 
 </script>
