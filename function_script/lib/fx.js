@@ -20,6 +20,12 @@ const map = curry((f, iter)=>{ // 어떤 값을 수집할지에 대해 추상화
     return res;
 })
 
+L.map = curry(function *(f, iter){ // 어떤 값을 수집할지에 대해 추상화 한다(함수 f에게 위임한다), 직접 입력안함
+    for (const a of iter){
+        yield go1(a,f);
+    }
+})
+
 
 const filter = curry((f, iter)=>{
     let res = [];
@@ -28,7 +34,7 @@ const filter = curry((f, iter)=>{
     }
     return res
 })
-const go1 = (a,f) => a instanceof Promise ? a.then(f) : f(a);
+const go1 = (a, f) => a instanceof Promise ? a.then(f) : f(a);
 
 const reduce = curry((f, acc, iter)=>{
     if(!iter){
@@ -67,7 +73,28 @@ const reduce_legacy = curry((f, acc, iter)=>{
 
 const take = curry((l, iter)=>{
     let res = [];
+    return function recur(){
+        for (const a of iter){
+            if (a instanceof Promise) return a.then(a =>{
+                res.push(a)
+                if(res.length == l) return res;
+                return recur()
+            });
+            res.push(a)
+            if(res.length == l) return res;
+        }
+        return res;
+    }
+})
+
+const take_legacy = curry((l, iter)=>{
+    let res = [];
     for (const a of iter){
+        if (a instanceof Promise) return a.then(a =>{
+            res.push(a)
+            if(res.length == l) return res;
+            
+        })
         res.push(a)
         if(res.length == l) return res;
     }
