@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <script src = "../lib/fx.js"> </script>
+    <title>SelfHello</title>
+</head>
+<body>
+    <h2>Hello</h2>
+</body>
+<script type='module'>
+// 0903 합성 관점에서의 Promise와 모나드
+// 함수 합성이란 f(g(x)) 이럴 안전?하게 하기 위해 모나드 사용..?
+// 모나드는 함수합성을 안전하게 하기 위한 도구
+// 컨테이너에 값이 들어있다 : [1]
+    const g = a=> a+1;
+    const f = a=> a*a;
+    console.clear();
+    log(f(g(1)))
+    log(f(g())) // 값이 안들어왓을 경우 작동안함 => 값이 있고 없고에 따라서
+    // [] 박스 안에 연산에 필요한 재료를 갖고 있는다
+    log([1].map(g).map(f))
+    // array는 재료모양일뿐, 우리가 원하는 건 array가 아니다.
+    let arr = [1]
+    arr.map(g).map(f).forEach(r=>log(r));
+    [1,2,3].map(g).map(f).forEach(r=>log(r));
+    [1,2,3].map(g).filter(a => a%2).forEach(r=>log(r));
+    // promise나 array나 동일하다
+    // map을 사용하는 이유는 array가 몇개나 올지 모르니까..
+    console.clear();
+    Promise.resolve(1).then(g).then(f).then(r => log(r))
+    Promise.resolve().then(g).then(f).then(r => log(r))
+    // promise는 대기가 있는 경우의 합성에서 안전을 위한 것임.
+    
+    new Promise(resolve =>
+        setTimeout(()=>resolve(2), 100)
+    ).then(g).then(f).then(r => log(r))
+    // 비동기 상황(딜레이가 필요한)에서도 함수를 합성시키기 위한
+</script>
+<script type='module'>
+//0904 Kleisli Composition 관점에서의 Promise
+// f(g(x)) = f(g(x)) 는 성립된다. x가 같다면. 코드상으론 그렇지않을수도있다.
+// f(g(x)) = g(x) 의 형태????
+var users = [
+    {id:1, name:'aa'},
+    {id:2, name:'bb'},
+    {id:3, name:'cc'},
+];
+
+// const getUserById =  id => 
+//     find(u => u.id == id, users) 
+
+const getUserById =  id => 
+    find(u => u.id == id, users) || Promise.reject('없어요');
+
+const f = ({name}) => name;
+const g = getUserById
+const fg = id =>f(g(id));
+
+const r = fg(2)
+
+const r2 = fg(2) // 에러 발생함
+// f 는 name을 받아야만 하는 거고, g는 안에 결과가 있어야만 동작하는 함수
+// 중간에 pop()를 안하면 괜찮지만
+
+const fg2 = id => Promise.resolve(id).then(g).then(f).catch(a=>a);
+// 실행이 안되면 g, f가 모두 안되고 catch로 바로 넘어가는 식으로 가능..
+users.pop();
+users.pop();
+g(2)
+fg2(2).then(log);
+</script>

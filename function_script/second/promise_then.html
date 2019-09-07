@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <script src = "../lib/fx.js"> </script>
+    <title>SelfHello</title>
+</head>
+<body>
+    <h2>Hello</h2>
+</body>
+<script>
+    // 0905 promise.then의 중요한 규칙
+    // 중첩되있어도 then 하나로 처리...
+    Promise.resolve(Promise.resolve(Promise.resolve(1))).then(log)
+    new Promise(resolve => resolve(new Promise(resolve => resolve(1)))).then(log)
+    // 아무리 중첩이 되있어도 then으로 해결 가능
+</script>
+<script>
+    // 0905 지연 평가 + Promise - L.map, map, take
+    go([Promise.resolve(1),Promise.resolve(2),Promise.resolve(3)],
+        L.map(a => a+10),
+        take(2),
+        log
+    )
+</script>

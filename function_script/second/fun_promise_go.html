@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head>
+    <script src = "../lib/fx.js"> </script>
+    <title>SelfHello</title>
+</head>
+<body>
+    <h2>Hello</h2>
+</body>
+<script>
+    // 0904 go, pipe reduce에서 비동기 제어
+    go(Promise.resolve(1),
+        a => a+10,
+        a=> Promise.reject('error'),
+        a => console.log('~~~'),
+        a => a+2,
+        log
+    ).catch(a => console.log(a));
+</script>

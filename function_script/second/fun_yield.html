@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<head>
+    <script src = "../lib/fx.js"> </script>
+    <title>SelfHello</title>
+</head>
+<body>
+    <h2>Hello yield</h2>
+</body>
+<script>
+    // 0831 range, L.range
+    const range = l => {
+        let i = -1;
+        let res = []
+        while(++i < l){
+            res.push(i)
+        }
+        return res
+    };
+    log(range(5))
+    var list = range(10);
+    log(reduce(add, list))
+    // 느긋한 L.range 만들기
+    const K = {};
+    K.range =  function *(l){
+        let i = -1;
+        while(++i < l){
+            yield i;
+        }
+    }
+    var list = K.range(10) // 얘는 리스트로 바로 나오는게 아니라 이터레이터를 리턴한다.
+    list.next()
+    // log(reduce(add, list)) // reduce는 iterator를 처리할 수 있으므로 가능하다.
+    // range와 K.range의 차이는 range의 경우 실행 즉이 이미 배열로 결과가 나옴(이미 평가가 되었다)
+    // K.range는 이터레이터만 구성하고 이 친구를 부를때(reduce , next()) 평가가 된다.
+</script>
+<script>
+    // 0831 take
+    // 인자를 두개 받음(limit, iter), limit까지만 만든다.
+    const take_new = curry((limit, iter) =>{
+        let res = []
+        for(const a of iter){
+            res.push(a);
+            if(res.length == limit) return res;
+        }
+        return res;
+    })
+    log(take(5, range(100))) // 100개를 다 만들고 그 중 5개를 가져옴
+    log(take(5, K.range(100))) // 딱 5개만 가져옴
+
+    go(
+        K.range(10000),
+        take(5),
+        reduce(add),
+        log
+    )
+</script>
+<script>
+    // 0831 L.map 만들기
+    K.map = curry(function *(f, iter){
+        for (const a of iter) yield f(a)
+    })
+    log(K.map(a =>a+10, [1,2,3]).next())
+    log(K.map(a =>a+10, [1,2,3]).next().value) // val 하나
+    log([...K.map(a =>a+10, [1,2,3])]) // list
+
+</script>
+<script>
+     //0831 L.filter 만들기
+     K.filter = curry(function *(f, iter){
+        for(const a of iter) if(f(a)) yield a
+    })
+    var it = K.filter(a=>a%2, [1,2,3,4])
+    log(it)
+    log([...it])
+</script>
+<script>
+    //0831 range, amp, filter, take, reduce 중첩 사용
+    go(
+        range(10),
+        map(n=>n+10), 
+        filter(n=>n%2),
+        take(2),
+        log
+    )
+    go(
+        K.range(10),
+        K.map(n=>n+10), 
+        K.filter(n=>n%2),
+        take(2),
+        log
+    )
+</script>
+<script>
+    //0831 map, filter 결합법칙
+    // 사용하는 데이터가 무엇이든, 함수가 순수함수라면 어떠한 일을 하든 결과가 같다.
+    // 0831 reduce, take 결과를 만드는 함수 <-> map, filter는 함수들을 합성하는 역할
+    // 0831 queryStr 함수 만들기, 객체로부터 URL 쿼리스트링
+    const queryStr = obj => go(
+      obj,
+      Object.entries,
+      map(([k,v])=> `${k}=${v}`),
+      reduce((a,b)=>`${a}&${b}`),
+      log
+    )
+    // 위 아래 모두 같음. obj를 받아서 obj를 주기 때문에 pipe 형식으로 변경
+    const queryStr_pipe = pipe(
+      Object.entries,
+      map(([k,v])=> `${k}=${v}`),
+      reduce((a,b)=>`${a}&${b}`),
+      log
+    )
+    log(queryStr({limit:10, offset:10, type:'notice'}))
+    log(queryStr_pipe({limit:10, offset:10, type:'notice'}))
+    // 0831 Array.prototype.join 보다 다형성이 높은 join 함수
+    const join = curry((seperator=',', iter) =>
+        reduce((a,b)=> `${a}${seperator}${b}`, iter))
+
+    const queryStr_join = pipe(
+      Object.entries,
+      K.map(([k,v])=> `${k}=${v}`),
+      join('*'),
+      log
+    )
+    log(queryStr_join({limit:10, offset:10, type:'notice'}))
+    // 0831 take, find
+    const users = [
+      {age:32,
+      age:33,
+      age:34,
+      age:20,
+      age:21}
+    ]
+    const find = curry((f, iter)=> go(
+      iter,
+      K.filter(f),
+      take(1),
+      ([a]) => a
+    ))
+    log(find(u=>u.age < 30)(users))
+    go(
+      users,
+      K.map(u=>u.age),
+      find(n=>n<30), 
+      log
+    )
+    //0831 L.map, L.filter로 map과 filter 만들기
+    console.clear()
+    log(map(a=>a+10, range(4)))
+    const new_map = curry((f, iter)=>go(
+      iter,
+      K.map(f),
+      take(Infinity)
+    ))
+    // curry f, iter 가 f, iter를 그대로 주고 있으므로.. pipe로 변경
+    const new_map_pipe = curry(pipe(
+      K.map, take(Infinity)
+    ))
+    log(map(a=>a+10, range(4)))
+    log(new_map_pipe(a=>a+10, range(4)))
+    const takeAll = take(Infinity)
+    const new_filter = curry(pipe(K.filter, takeAll))
+		//0831 L.flatten, flatten
+</script>
