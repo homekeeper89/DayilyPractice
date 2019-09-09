@@ -28,7 +28,12 @@ def test_bubble_two():
 def test_selection_two():
     num = random.sample(range(1,100), 10)
     res = selection_sort_two(num)
-    import ipdb; ipdb.set_trace()
+    res_ = compare_lists(res,num)
+    assert res_ == True
+
+def test_insertion_two(make_random_range):
+    num = make_random_range
+    res = insertion_sort_two(num)
     res_ = compare_lists(res,num)
     assert res_ == True
 

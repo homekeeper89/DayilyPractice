@@ -64,9 +64,20 @@ def selection_sort_two(num_list):
         num_list[i] = temp
     return num_list
 
+<<<<<<< HEAD
+def insertion_sort_two(num_list):
+    for index in range(1, len(num_list)):
+        for inner_index in range(index, 0, -1):
+            val = num_list[index]
+            if num_list[inner_index] > val:
+                num_list[index] = num_list[inner_index]
+                num_list[inner_index] = val
+    return num_list
+=======
 
 
 
+>>>>>>> 1fef2683650a2e6b4fda6ce28f7c7cdd67dcc6dd
 
 
 
