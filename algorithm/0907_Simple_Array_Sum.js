@@ -15,5 +15,5 @@ const add = (a,b) => a+b;
 
 const list = [1,2,3,4,6]
 
-log(reduce(add, list))
+// log(reduce(add, list))
 

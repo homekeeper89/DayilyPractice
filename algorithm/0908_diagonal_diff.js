@@ -51,3 +51,4 @@ let one = filter_(check_index, flat_list)
 let two = filter_(check_index_, flat_list)
 one = reduce_(add, one)
 two = reduce_(add, two)
+one - two
