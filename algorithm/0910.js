@@ -1,4 +1,4 @@
-// 5개의 원소 중 4개의 원소를 픽해서 min sum과 max sum을 해라
+// Mini-Max Sum 5개의 원소 중 4개의 원소를 픽해서 min sum과 max sum을 해라
 let arr = [4,5,2,3,1]
 
 const bubble_sort = (iter=>{
