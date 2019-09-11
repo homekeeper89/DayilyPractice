@@ -5,20 +5,24 @@ class Celsius:
     def to_fahrenheit(self):
         return (self.temperature * 1.8) + 32
     
-    def get_temperature(self):
+    @property
+    def temperature(self):
         print('Getting Value')
         return self._temperature
     
-    def set_temperature(self, value):
+    @temperature.setter
+    def temperature(self, value):
         if value < -273:
             raise ValueError('Temperature below -273 is not possible')
         print('Setting value')
         self._temperature = value
+
     # any code that retrieves the value of temperature will automatically
     # call get_temperature() instead of a dictionay(__dict__) look-up.
     # any code that assigns a value to temperature will automacatically call set_temperature()
     # 얘가 어떻게 get, set으로...  property안에 순서대로인가?
-    temperature = property(get_temperature, set_temperature)
+    # temperature = property(get_temperature, set_temperature)
+    # property(fget=get함수, fset=셋함수, fdel=del함수, doc=??)
 
     def __repr__(self):
         return 'temp {} fahr {}'.format(self._temperature, self.to_fahrenheit())
