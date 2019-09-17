@@ -13,6 +13,7 @@ def make_random_range():
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
+    # 참고 : https://medium.com/hultner/pytest-save-full-error-output-to-file-ee37d6ccbd32
     # execute all other hooks to obtain the report object
     outcome = yield
     rep = outcome.get_result()
