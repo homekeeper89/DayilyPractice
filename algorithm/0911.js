@@ -16,7 +16,7 @@ const str_array = (start, num)=>{
     return res
 }
 const stair = (num)=>{
-    for (let i=num; i>=0;i--){
+    for (let i=num; i>0;i--){
         console.log(num_array(i) + str_array(i, num))
     }
 }
