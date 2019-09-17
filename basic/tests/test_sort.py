@@ -16,13 +16,13 @@ def test_insertion():
     num = [5,3,8,6,7,2]
     res = insertion_sort(num)
     res_ = compare_lists(res, num)
-    import ipdb; ipdb.set_trace()
     assert res_ == True
 
 def test_bubble_two():
     num = [5,3,8,6,7,2]
     res = bubble_sort_two(num)
     res_ = compare_lists(res,num)
+    import ipdb; ipdb.set_trace()
     assert res_ == True
 
 def test_selection_two():
