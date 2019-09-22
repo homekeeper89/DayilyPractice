@@ -1,4 +1,4 @@
-
+// simple array sum
 const log = console.log
 const reduce = (f, acc, iter)=>{
     if(!iter){
