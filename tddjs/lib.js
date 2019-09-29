@@ -10,3 +10,15 @@ function getChange(totalPayble, cashPaid){
     }
     return change
 }
+// .html()은 해당 태그 내의 내용을 모두 지우고 새롭게 
+// append()는 해당 태그 내 내용을 그대로 두고 추가
+function table_insert(target){
+    // 제목 내용 작성자 시간
+    var time = new Date().toLocaleTimeString();
+    let title = 'input 테스트'
+    let content = 'js는 왜케 하기가 싫지'
+    let name = 'KingJang'
+    var message = `<tr><td>${title}</td><td>${content}</td><td>${name}</td><td>${time}</td></tr>`;
+    $('.base > tbody:last').append(message)
+}
+table_insert()
