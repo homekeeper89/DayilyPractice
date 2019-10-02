@@ -66,3 +66,21 @@ QUnit.test("TestRange", function(assert){
   )
   assert.deepEqual(rres, [9])
 })
+
+const f = (s,t,a,b,apples,oranges)=>{
+  let apple_base = a;
+  let orange_base = b
+  let apples_res = curry_go(
+    apples,
+    curry_map(a=>a+apple_base),
+    curry_filter(a => (a >= s && a <= t))
+  )
+  let orange_res = curry_go(
+    oranges,
+    curry_map(a=>a+orange_base),
+    curry_filter(a => (a >= s && a <= t))
+  )
+  console.log(apples_res.length, orange_res.length)
+}
+
+f(7,11,5,15,[-2,2,1],[5,-6])
