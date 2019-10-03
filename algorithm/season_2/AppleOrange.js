@@ -1,5 +1,10 @@
 //2019-10-01
 
+
+const arr = [7,11,5,15]
+const apples = [-2,2,1]
+const oranges = [5,-6]
+
 const reduce = (f, acc, iter)=>{
   if(!iter){
     iter = acc[Symbol.iterator]()
@@ -10,11 +15,6 @@ const reduce = (f, acc, iter)=>{
   }
   return acc;
 }
-
-const arr = [7,11,5,15]
-const apples = [-2,2,1]
-const oranges = [5,-6]
-
 const go = (...args) =>reduce((a,f)=>f(a), args)
 const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs)
 const curry = f => (a, ..._) => _.length ? f(a, ..._) :(..._) =>f(a, ..._)
