@@ -22,7 +22,15 @@ const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs);
 const curry = f => (a, ..._) => _.length ? f(a, ..._):(..._)=>f(a, ..._)
 
 const test_input = [0,2,5,3]
-
+const check = (args)=> {
+  console.log(args[0] - args[2] , args[1] - args[3])
+  if(args[0] - args[2] < 0 && args[1] - args[3] >0){
+    return 'YES'
+  }else if(args[0] - args[2] > 0 && args[1] - args[3] < 0){
+      return 'YES'
+  }
+  return 'NO'
+}
 QUnit.test("First Test", function(assert){
   assert.equal(true, 'a'==='a')
 })
@@ -30,6 +38,7 @@ QUnit.cases(
   [{input : [0,2,5,4], expected:'NO'},
   {input : [0,3,4,2], expected:'YES'}]
 ).test('input test', function(params){
-  let res = 'YES'
+  console.log(params.input)
+  let res = check(params.input)
   equal(res, params.expected)
 })
