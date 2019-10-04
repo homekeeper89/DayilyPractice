@@ -1,4 +1,4 @@
-// Kangaroo,
+// Kangaroo -> 12/30 test cases failed
 
 const reduce = (f, acc, iter)=>{
   if(!iter){
@@ -23,7 +23,6 @@ const curry = f => (a, ..._) => _.length ? f(a, ..._):(..._)=>f(a, ..._)
 
 const test_input = [0,2,5,3]
 const check = (args)=> {
-  console.log(args[0] - args[2] , args[1] - args[3])
   if(args[0] - args[2] < 0 && args[1] - args[3] >0){
     return 'YES'
   }else if(args[0] - args[2] > 0 && args[1] - args[3] < 0){
