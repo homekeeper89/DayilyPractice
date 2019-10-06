@@ -21,6 +21,29 @@ QUnit.cases([{input:test_input, expected:[2,4]}])
 .test('first tset', function(params){
   deepEqual(params.expected, params.expected)
 })
+let res = [0,0]
+const checker = (iter)=>{
+  for(const ele of iter){
+    if(ele > max_val){
+      max_val = ele
+      res[0] += 1
+      continue
+    }else if(ele<min_val){
+      min_val = ele;
+      res[1] += 1
+      continue
+    }
+  }
+  return res
+}
+let max_val = test_input[0]
+let min_val = test_input[0]
+const log = console.log
+const curry_checker = curry(checker)
+curry_go(test_input,
+  curry_checker(test_input),
+  log
+  )
 // n개를 받으면 1번째부터 n번째가지 슬라이싱
 // 1번째는 max이자 min으로 설정
 // filter를 통해 max, min 확인
