@@ -51,3 +51,32 @@ gen = funGen();
 log(gen.next()) // undefined
 log(gen.next()) // 'I am useless'
 log(gen.next())
+
+console.clear()
+function *fetchUser(){
+  const user = yield getData();
+  console.log(user)
+}
+function getData(){
+  return {name:'rajesh', dob:'1991'}
+}
+
+var fetchGen = fetchUser();
+
+log(fetchGen.next());
+log(fetchGen.next())
+
+function *newfetchUser(action){
+  const user = yield apiCall();
+}
+function apiCall(){
+  return new Promise(resolve =>{
+    setTimeout(()=>{
+      resolve({name:'rajesh', dod:'1991'})
+    }, 2000)
+  })
+}
+
+var newGen = newfetchUser();
+
+log(newGen.next().value.then(n=>log(n)))
