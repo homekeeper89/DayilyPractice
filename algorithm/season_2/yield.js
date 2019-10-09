@@ -1,12 +1,12 @@
 // 다시 테스트
 // 테스트 두번째
+const log = console.log
 function *foo(){
   console.log(yield)
   let val = yield
   
 }
 let g = foo();
-
 const someFunc = (iter) =>{
   for(const ele of iter){
     let g = foo()
