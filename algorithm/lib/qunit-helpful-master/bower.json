@@ -1,0 +1,28 @@
+{
+  "name": "qunit-helpful",
+  "main": "qunit-helpful-browser.js",
+  "version": "0.6.0",
+  "description": "QUnit plugin to automatically show helpful info for failed assertions",
+  "keywords": [
+    "qunit",
+    "dependency",
+    "inject",
+    "test",
+    "assert"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/bahmutov/qunit-helpful",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "configs",
+    "test",
+    "index.html",
+    "tests",
+    "Gruntfile.js",
+    "qunit-inject.js",
+    "package.json"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>"
+}

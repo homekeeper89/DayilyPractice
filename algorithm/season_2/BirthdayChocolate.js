@@ -41,7 +41,7 @@ const checker = (iter, sum, sequence, counter=0) => {
 QUnit.cases([{input : test_input, sum:test_sum, expected:2}])
   .test("First Test", function(param){
     let ans = 2
-    equal(param.expected == ans, true)
+    QUnit.equal(param.expected == ans, true)
   })
 QUnit.cases([
   {input : [1,2,1,3,2], sum:3, sequence:2, expected:2},
@@ -49,5 +49,8 @@ QUnit.cases([
   {input : [4], sum:4, sequence:1, expected:1},
 ]).test("Checker test", function(param){
     let res =checker(param.input, param.sum, param.sequence)
-    equal(param.expected == res, true)
+    QUnit.equal(param.expected == res, true)
   })
+  console.log("%cWhatever you want to say", "color: blue")
+  console.log("%cWhatever you want to say", "color: red")
+  console.log("%cWhatever you want to say", "color: green")
