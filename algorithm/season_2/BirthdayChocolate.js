@@ -20,18 +20,24 @@ const curry_go = curry(go)
 const test_input = [1,2,1,3,2]
 const test_sum = 3 // 원하는 값
 const test_sequence = 2 // 연속되는 시퀀스
+// 1 <= d <= 31, 1 <= m <= 12
 const checker = (iter, sum, sequence, counter=0) => {
+  if (sequence == 0 || sequence > iter.length){
+    return counter
+  }
   for(let i = 0; i < iter.length; i++){
     let temp = sum
     if(sequence==1){
       temp -= iter[i]
     }
     for(let j = i; j <= i + (sequence-1); j++){
-      if(j+sequence >=iter.length){
+      if(j+sequence-1 >=iter.length){
         continue
       }
+      console.log(`%ctemp : ${temp} ${iter[j]}`,`color:red`)
       temp -= iter[j]
     }
+    console.log(`%ctemp : ${temp}`,`color:red`)
     if(temp == 0){
       counter += 1
     }
@@ -41,16 +47,15 @@ const checker = (iter, sum, sequence, counter=0) => {
 QUnit.cases([{input : test_input, sum:test_sum, expected:2}])
   .test("First Test", function(param){
     let ans = 2
-    QUnit.equal(param.expected == ans, true)
+    equal(param.expected == ans, true)
   })
 QUnit.cases([
   {input : [1,2,1,3,2], sum:3, sequence:2, expected:2},
   {input : [1,1,1,1,1], sum:3, sequence:2, expected:0},
   {input : [4], sum:4, sequence:1, expected:1},
+  {input : [4,2,9,8,3], sum:11, sequence:2, expected:2}
 ]).test("Checker test", function(param){
     let res =checker(param.input, param.sum, param.sequence)
-    QUnit.equal(param.expected == res, true)
+    dev_console(param.input, res)
+    equal(param.expected == res, true)
   })
-  console.log("%cWhatever you want to say", "color: blue")
-  console.log("%cWhatever you want to say", "color: red")
-  console.log("%cWhatever you want to say", "color: green")
