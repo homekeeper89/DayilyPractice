@@ -1,4 +1,5 @@
 // 1008, 1009, 7/14 test cases failed
+// 1011 5/14 test cases failed
 const reduce = (f, acc, iter)=>{
   if(!iter){
     iter = acc[Symbol.iterator]();
@@ -25,30 +26,30 @@ const checker = (iter, sum, sequence, counter=0) => {
   if (sequence == 0 || sequence > iter.length){
     return counter
   }
+  if(sequence==1 && iter.length == 1){
+    return iter[0] == sum ? 1 : 0;
+  }
   for(let i = 0; i < iter.length; i++){
     let temp = sum
+    let seq = sequence
     if(sequence==1){
       temp -= iter[i]
     }
     for(let j = i; j <= i + (sequence-1); j++){
-      if(j+sequence-1 >=iter.length){
+      if(j+sequence-1 >iter.length){
         continue
       }
-      console.log(`%ctemp : ${temp} ${iter[j]}`,`color:red`)
+      // console.log(`%ctemp : ${temp} ${iter[j]}`,`color:red`)
       temp -= iter[j]
+      seq -= 1;
     }
-    console.log(`%ctemp : ${temp}`,`color:red`)
-    if(temp == 0){
+    // console.log(`%ctemp : ${temp}`,`color:red`)
+    if(seq == 0 && temp == 0){
       counter += 1
     }
   }
   return counter
 }
-QUnit.cases([{input : test_input, sum:test_sum, expected:2}])
-  .test("First Test", function(param){
-    let ans = 2
-    equal(param.expected == ans, true)
-  })
 QUnit.cases([
   {input : [1,2,1,3,2], sum:3, sequence:2, expected:2},
   {input : [1,1,1,1,1], sum:3, sequence:2, expected:0},
@@ -56,6 +57,6 @@ QUnit.cases([
   {input : [4,2,9,8,3], sum:11, sequence:2, expected:2}
 ]).test("Checker test", function(param){
     let res =checker(param.input, param.sum, param.sequence)
-    dev_console(param.input, res)
+    dev_console(param.input, res,param.expected)
     equal(param.expected == res, true)
   })
