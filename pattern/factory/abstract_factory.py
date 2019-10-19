@@ -5,6 +5,8 @@
 상황 : 인도식 피자와 미국식 피자를 판매하는 식당을 연다
 추상 기본 클래스 PizzaFactory를 선언
 PizzaFactory 클래스에는 ConcreateFactory가 상속 받을 createVegPizza() 와 createNonVegPizza(), 두개의 추상 메서드가 있다
+
+이건 진짜 모르겠다.
 """
 from abc import ABCMeta, abstractmethod
 
