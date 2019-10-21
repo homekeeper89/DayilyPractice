@@ -17,6 +17,7 @@ ConcreateProduct
 
 즉 각각의 SNS 클래스는 프로필을 만드는 인터페이스를 상속 받은 후, 섹션을 생성하는 팩토리 패턴을 만들어야 한다.
 
+장점 : 유연성과 포괄성을 갖추어, 한 클래스에 종속 되지않는다.
 """
 
 class Section(metaclass=ABCMeta):

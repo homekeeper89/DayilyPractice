@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"
+    </head>
+    <body>
+        <p class='c1'> 첫번째 태그</p>
+        <div class='c1'>첫번째 div</div>
+        <div id='a1'>
+            <div>
+                <p>id =1 안에 P 태그</p>
+            </div>
+            <p>p tag outside id=1</p>
+        </div>
+        <p class='c2'> c2</p>
+        <p class='c3'> c3</p>
+        <p class='c4'> c4</p>
+    </body>
+<style>
+    .c2, .c3, .c4{
+        color: red;
+        background-color: burlywood;
+    }
+    #a1 p { /* a1 안에 모든 p 태그*/
+        color:blueviolet;
+    }
+    #a1 > p{ /* a1 바로 아래 p 태그*/
+        background-color: brown;
+    }
+    p.c1 {
+        color:blue;
+        background-color: red;
+    }
+    div.c1{
+        color: antiquewhite;
+        background-color: aqua;
+    }
+</style>
+</html>
