@@ -9,3 +9,26 @@
 // 4. 있으면 res에 추가
 // 엔드조건은?
 
+const solution = (input, key) =>{
+  let res = []
+  for(let i = 0; i < input.length; i++){
+    for(let j = i+1; j < input.length; j++){
+      if((input[i] + input[j]) % key == 0){
+        let temp = []
+        temp.push(input[i])
+        temp.push(input[j])
+        res.push(temp)
+      }
+    }
+  }
+  return res.length
+}
+
+QUnit.cases(
+  [{input:[1,2,3,4,5,6], key:5, expected:3},
+  {input:[1,3,2,6,1,2], key:3, expected:5}]
+).test('Divisible ', function(param){
+  let res = solution(param.input, param.key)
+  equal(res, param.expected)
+})
+
