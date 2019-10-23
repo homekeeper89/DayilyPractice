@@ -12,3 +12,9 @@
 // 엔드조건? : iter 다 돌면 엔드.
 
 
+QUnit.cases([
+  {input : [1,1,2,2,3], expected : 1},
+  {input : [1,4,4,4,5,3], expected : 4},
+]).test('Set env', function(param){
+  equal(param.expected, param.expected)
+})
