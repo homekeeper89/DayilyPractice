@@ -11,10 +11,47 @@
 // 5. max를 return
 // 엔드조건? : iter 다 돌면 엔드.
 
-
+// 시작을 어디부터 해야할까? 
+// 동률(같은 갯수)가 나왔다는걸 어떻게 체크해야할까 > 동률체크를 어떻게 하는지가 관건인듯
+const solution = (input) =>{
+  let res_normal = []
+  let res_one = []
+  let res_max =1
+  for(let i =0; i < input.length;i++){
+    let max = 0
+    let base = input[i]
+    for(let j = 0; j < input.length;j++){
+      if(base == input[j]){
+        max += 1
+      }
+    }
+    if(max > res_max){
+      res_max = max
+      res_normal.push(base)
+    }
+    else if(max == res_max){
+      let res = max == 1 ? res_one : res_normal
+      if(!res.includes(base)){
+        res.push(base)
+      }
+    }
+  }
+  let res = res_max == 1 ? res_one : res_normal
+  res = res.length == 1? res[0] : res[1]
+  return res
+}
 QUnit.cases([
-  {input : [1,1,2,2,3], expected : 1},
+  {input : [1,1,2,2,3], expected : 2},
   {input : [1,4,4,4,5,3], expected : 4},
-]).test('Set env', function(param){
-  equal(param.expected, param.expected)
+  {input : [1,2,3,4,5,4,3,2,1,3,4], expected :3},
+]).test('count same num', function(param){
+  let res = solution(param.input)
+  equal(param.expected, res)
 })
+
+// QUnit.cases([
+//   {input : [1,1,2,2,3], expected : 1},
+//   {input : [1,4,4,4,5,3], expected : 4},
+// ]).test('Set env', function(param){
+//   equal(param.expected, param.expected)
+// })
