@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 """
 상황 : 백화점에서 쇼핑을 하는데 현금이 부족할 경우 이를 현금 카드가 대체해줄 수 있다
 
@@ -59,6 +60,8 @@ class You:
 if __name__ == '__main__':
     you = You()
 =======
+=======
+>>>>>>> 6f598cd0b3dca1c89e132e7acafafb0f93c4a482
 """
 상황 : 백화점에서 쇼핑을 하는데 현금이 부족할 경우 이를 현금 카드가 대체해줄 수 있다
 
@@ -129,5 +132,8 @@ class You:
 
 if __name__ == '__main__':
     you = You()
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 6f598cd0b3dca1c89e132e7acafafb0f93c4a482
     you.make_payment()

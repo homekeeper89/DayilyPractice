@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from abc import ABCMeta, abstractmethod
 """
 상황 : 링크드인 또는 페이스북 같은 SNS에 사용자가 프로필을 작성하는 경우, 프로필에는 여러 섹션이 있다.
@@ -72,6 +73,8 @@ if __name__ =='__main__':
     profile = eval(profile_type.lower())()
     print("Create profile...", type(profile).__name__)
 =======
+=======
+>>>>>>> 6f598cd0b3dca1c89e132e7acafafb0f93c4a482
 from abc import ABCMeta, abstractmethod
 """
 상황 : 링크드인 또는 페이스북 같은 SNS에 사용자가 프로필을 작성하는 경우, 프로필에는 여러 섹션이 있다.
@@ -145,5 +148,8 @@ if __name__ =='__main__':
     profile_type = input("Which profile you'd like to create? [Linkedin or Facebook]")
     profile = eval(profile_type.lower())()
     print("Create profile...", type(profile).__name__)
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 6f598cd0b3dca1c89e132e7acafafb0f93c4a482
     print("Profile has sections --", profile.getSections())

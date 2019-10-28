@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 """
 파사드란 건물의 정면을 뜻함
 상점에 고객이 물품을 구입하러 왔을때 고객은 상점의 구조를 알 필요 없음. 주인에게 물어보면 됨.
@@ -83,6 +84,8 @@ class Client(object):
 if __name__ == '__main__':
     cli = Client()
 =======
+=======
+>>>>>>> 6f598cd0b3dca1c89e132e7acafafb0f93c4a482
 """
 파사드란 건물의 정면을 뜻함
 상점에 고객이 물품을 구입하러 왔을때 고객은 상점의 구조를 알 필요 없음. 주인에게 물어보면 됨.
@@ -172,5 +175,8 @@ class Client(object):
 
 if __name__ == '__main__':
     cli = Client()
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 6f598cd0b3dca1c89e132e7acafafb0f93c4a482
     cli.askEventManager()

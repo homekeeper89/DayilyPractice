@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from abc import ABCMeta, abstractmethod
 
 class Animal(metaclass=ABCMeta):
@@ -22,6 +23,8 @@ if __name__ == '__main__':
     ff = ForestFactory()
     animal = input('Which animal should make sound ')
 =======
+=======
+>>>>>>> 6f598cd0b3dca1c89e132e7acafafb0f93c4a482
 from abc import ABCMeta, abstractmethod
 
 """
@@ -49,5 +52,8 @@ class ForestFactory(object):
 if __name__ == '__main__':
     ff = ForestFactory()
     animal = input('Which animal should make sound ')
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 6f598cd0b3dca1c89e132e7acafafb0f93c4a482
     ff.make_sound(animal)
