@@ -1,3 +1,30 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+from abc import ABCMeta, abstractmethod
+
+class Animal(metaclass=ABCMeta):
+    @abstractmethod
+    def do_say(self):
+        pass
+
+class Dog(Animal):
+    def do_say(self):
+        print("Bhow Bhow")
+
+class Cat(Animal):
+    def do_say(self):
+        print("Meow Meow")
+
+class ForestFactory(object):
+    def make_sound(self, object_type):
+        return eval(object_type)().do_say()
+
+if __name__ == '__main__':
+    ff = ForestFactory()
+    animal = input('Which animal should make sound ')
+=======
+=======
+>>>>>>> 6f598cd0b3dca1c89e132e7acafafb0f93c4a482
 from abc import ABCMeta, abstractmethod
 
 """
@@ -25,4 +52,8 @@ class ForestFactory(object):
 if __name__ == '__main__':
     ff = ForestFactory()
     animal = input('Which animal should make sound ')
+<<<<<<< HEAD
+>>>>>>> master
+=======
+>>>>>>> 6f598cd0b3dca1c89e132e7acafafb0f93c4a482
     ff.make_sound(animal)

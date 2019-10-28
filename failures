@@ -1,0 +1,107 @@
+2019-09-17 23:55:15
+def test_bubble_two():
+        num = [5,3,8,6,7,2]
+        res = bubble_sort_two(num)
+        res_ = compare_lists(res,num)
+        import ipdb; ipdb.set_trace()
+>       assert res_ == True
+
+basic\tests\test_sort.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+basic\tests\test_sort.py:26: in test_bubble_two
+    assert res_ == True
+..\..\..\AppData\Local\Programs\Python\Python36\lib\bdb.py:51: in trace_dispatch
+    return self.dispatch_line(frame)
+..\..\..\AppData\Local\Programs\Python\Python36\lib\bdb.py:69: in dispatch_line
+    self.user_line(frame)
+..\..\..\AppData\Local\Programs\Python\Python36\lib\pdb.py:261: in user_line
+    self.interaction(frame, None)
+venv\lib\site-packages\IPython\core\debugger.py:294: in interaction
+    OldPdb.interaction(self, frame, traceback)
+..\..\..\AppData\Local\Programs\Python\Python36\lib\pdb.py:352: in interaction
+    self._cmdloop()
+..\..\..\AppData\Local\Programs\Python\Python36\lib\pdb.py:321: in _cmdloop
+    self.cmdloop()
+..\..\..\AppData\Local\Programs\Python\Python36\lib\cmd.py:126: in cmdloop
+    line = input(self.prompt)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_pytest.capture.DontReadFromInput object at 0x0000025DC5E72400>
+args = ()
+
+    def read(self, *args):
+>       raise IOError("reading from stdin while output is captured")
+E       OSError: reading from stdin while output is captured
+
+venv\lib\site-packages\_pytest\capture.py:706: OSError
+2019-09-17 23:54:47
+def test_bubble_two():
+        num = [5,3,8,6,7,2]
+        res = bubble_sort_two(num)
+        res_ = compare_lists(res,num)
+        import ipdb; ipdb.set_trace()
+>       assert res_ == True
+
+basic\tests\test_sort.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+basic\tests\test_sort.py:26: in test_bubble_two
+    assert res_ == True
+..\..\..\AppData\Local\Programs\Python\Python36\lib\bdb.py:51: in trace_dispatch
+    return self.dispatch_line(frame)
+..\..\..\AppData\Local\Programs\Python\Python36\lib\bdb.py:69: in dispatch_line
+    self.user_line(frame)
+..\..\..\AppData\Local\Programs\Python\Python36\lib\pdb.py:261: in user_line
+    self.interaction(frame, None)
+venv\lib\site-packages\IPython\core\debugger.py:294: in interaction
+    OldPdb.interaction(self, frame, traceback)
+..\..\..\AppData\Local\Programs\Python\Python36\lib\pdb.py:352: in interaction
+    self._cmdloop()
+..\..\..\AppData\Local\Programs\Python\Python36\lib\pdb.py:321: in _cmdloop
+    self.cmdloop()
+..\..\..\AppData\Local\Programs\Python\Python36\lib\cmd.py:126: in cmdloop
+    line = input(self.prompt)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_pytest.capture.DontReadFromInput object at 0x00000295CC082438>
+args = ()
+
+    def read(self, *args):
+>       raise IOError("reading from stdin while output is captured")
+E       OSError: reading from stdin while output is captured
+
+venv\lib\site-packages\_pytest\capture.py:706: OSError2019-09-17 23:54:42
+def test_bubble_two():
+        num = [5,3,8,6,7,2]
+        res = bubble_sort_two(num)
+        res_ = compare_lists(res,num)
+        import ipdb; ipdb.set_trace()
+>       assert res_ == True
+
+basic\tests\test_sort.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+basic\tests\test_sort.py:26: in test_bubble_two
+    assert res_ == True
+..\..\..\AppData\Local\Programs\Python\Python36\lib\bdb.py:51: in trace_dispatch
+    return self.dispatch_line(frame)
+..\..\..\AppData\Local\Programs\Python\Python36\lib\bdb.py:69: in dispatch_line
+    self.user_line(frame)
+..\..\..\AppData\Local\Programs\Python\Python36\lib\pdb.py:261: in user_line
+    self.interaction(frame, None)
+venv\lib\site-packages\IPython\core\debugger.py:294: in interaction
+    OldPdb.interaction(self, frame, traceback)
+..\..\..\AppData\Local\Programs\Python\Python36\lib\pdb.py:352: in interaction
+    self._cmdloop()
+..\..\..\AppData\Local\Programs\Python\Python36\lib\pdb.py:321: in _cmdloop
+    self.cmdloop()
+..\..\..\AppData\Local\Programs\Python\Python36\lib\cmd.py:126: in cmdloop
+    line = input(self.prompt)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_pytest.capture.DontReadFromInput object at 0x000001AB52522048>
+args = ()
+
+    def read(self, *args):
+>       raise IOError("reading from stdin while output is captured")
+E       OSError: reading from stdin while output is captured
+
+venv\lib\site-packages\_pytest\capture.py:706: OSError
