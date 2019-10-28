@@ -12,10 +12,10 @@ const dev_console_two = (level, ...args) =>{
   console.log(clean);
 }
 
-if(level == 'normal'){
-  console.log('normal log')
-}else if(level == 'warn'){
-  console.warn('warn')
-}else if(level=='error'){
-  console.error('error')
-}
+// if(level == 'normal'){
+//   console.log('normal log')
+// }else if(level == 'warn'){
+//   console.warn('warn')
+// }else if(level=='error'){
+//   console.error('error')
+// }
