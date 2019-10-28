@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "C:\\Users\\User\\Desktop\\code\\pycon\\tutorial\\flask"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "venv\\Scripts\\python.exe",
+		"liveServer.settings.multiRootWorkspaceName": "DayilyPractice"
+	}
+}
