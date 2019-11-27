@@ -30,7 +30,17 @@ header .spot{
 
 /* float text-aling center가 안먹힘 
   디스플레이 인라인블럭은 코드상의 줄 내림이 있을경우 스페이스 발생
+  클릭 영역을 넓히는 게 좋다. 
 */
 header .lnb li{
   display: inline-block;
+}
+/* TODO line-height 뭐하는 놈이지 */
+header .lnb li a{
+  display: block;
+  height:81px;
+  padding:0 35px;
+  font-size:17px;
+  color:#333;
+  line-height:81px;
 }
