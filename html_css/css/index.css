@@ -35,7 +35,9 @@ header .spot{
 header .lnb li{
   display: inline-block;
 }
-/* TODO line-height 뭐하는 놈이지 */
+/* TODO line-height 뭐하는 놈이지 
+줄간격을 주게 되면 텍스트 한줄은 가운대로 온다고 함
+*/
 header .lnb li a{
   display: block;
   height:81px;
