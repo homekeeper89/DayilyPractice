@@ -6,24 +6,28 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    div{
-      width:100px;
-      height:100px;
-      border:5px solid slategray;
-      /* 패딩은 border와 내용 사이의 거리를 뜻함 */
-    }
     .wrap{
-      padding:10px 10px 10px 50px;
-      margin-bottom: 10px;
+      height: 3000px;
+    }
+    .wrap > div{
+      border: 1px solid gray;
+      width: 100px;
+      height: 100px;
+      margin:10px;
+      float: left;
+      /* 포지션 기본값은 static */
+    }
+    .wrap > div:nth-child(2){
+      color:red;
+      margin-left:100px;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    div Elements
-  </div>
-  <div>
-      other div Elements
+    <div>first</div>
+    <div>second</div>
+    <div>third</div>
   </div>
 </body>
 </html>
