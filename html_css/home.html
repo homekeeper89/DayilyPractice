@@ -7,19 +7,26 @@
   <title>Document</title>
   <style>
     .wrap{
-      height: 3000px;
+      background-color:slategray;
+      padding:0.5rem;
+      width:300px;
+      box-sizing: border-box;
+      overflow: hidden;
     }
-    .wrap > div{
-      border: 1px solid gray;
-      width: 100px;
+    .wrap > div {
+      background-color:#333;
+      width: 50px;
+      height: 50px;
+      margin:0.5rem;
+      color:#fff;
+      float:left;
+    }
+    footer {
+      width:300px;
       height: 100px;
-      margin:10px;
-      float: left;
-      /* 포지션 기본값은 static */
-    }
-    .wrap > div:nth-child(2){
-      color:red;
-      margin-left:100px;
+      background-color:#bb3;
+      margin-top:0.5rem;
+      clear:left;
     }
   </style>
 </head>
@@ -28,6 +35,7 @@
     <div>first</div>
     <div>second</div>
     <div>third</div>
+    <footer></footer>
   </div>
 </body>
 </html>
