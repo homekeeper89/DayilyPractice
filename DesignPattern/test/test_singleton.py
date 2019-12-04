@@ -1,4 +1,4 @@
-from DesignPattern import singleton
+from .src.singleton import singleton
 
 def test_singleton():
     ss = Singleton()
