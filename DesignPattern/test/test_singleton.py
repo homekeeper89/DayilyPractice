@@ -1,4 +1,4 @@
-from .src.singleton import singleton
+from src.singleton.singleton import Singleton
 
 def test_singleton():
     ss = Singleton()
