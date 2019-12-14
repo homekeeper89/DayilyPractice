@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .main {
+        background-color: mediumspringgreen;
+      }
+      .main .title {
+        text-align:center;
+        font-size:30px;
+      }
+      .form {
+        background-color: grey;
+        margin: 20px 20px 20px 20px;
+      }
+      .form{
+        text-align: center;
+      }
+      .form-title{
+        margin-bottom:10px;
+      }
+      .formUnit{
+        display: inline-flex;
+      }
+      .left{
+        text-align: right;
+        margin-right:5px;
+      }
+      .right{
+        text-align: left;
+        margin-left:5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="title">
+        <span>Survey Form</span>
+      </div>
+      <div class="form">
+        <div class="form-title">
+          <span>Let us how we can improve freeCodeCamp</span>
+        </div>
+        <div class="form-body">
+          <form action="">
+            <div class="formUnit name">
+                <div class="left">
+                    <label for="name">* Name</label>
+                </div>
+                <div class="right">
+                    <input type="text" placeholder="Enter your name"></input>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
