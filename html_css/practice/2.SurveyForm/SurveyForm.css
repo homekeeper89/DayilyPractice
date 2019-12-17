@@ -1,0 +1,36 @@
+.wrapper {
+  background-color: mediumaquamarine
+}
+
+.center {
+  text-align: center;
+}
+
+.toright {
+  text-align: right;
+}
+
+.left-thing {
+  margin-right:10px;
+  width:90%;
+  float: left;
+}
+
+.right-thing {
+  margin-left: 10px;
+  width:100%;
+  float: right;
+}
+
+.toleft {
+  text-align: left;
+}
+
+.input-name-group {
+  display: flex;
+}
+
+.contents {
+  margin: 40px 30px;
+  background-color: gray;
+}
