@@ -26,11 +26,11 @@
   text-align: left;
 }
 
-.input-name-group {
+.input-group {
   display: flex;
 }
 
 .contents {
   margin: 40px 30px;
-  background-color: gray;
+  background-color: gainsboro;
 }
