@@ -9,3 +9,4 @@
 - Observer는 attach() 메소드를 통해 자신을 NewsPublisher에 등록하고 detach() 메소드로 등록을 취소한다
 - subscribers() 는 Subject에 등록된 구독자 목록을 반환한다.
 - notifySubscriber()는 NewsPublihser에 등록된 모든 구독자에게 알림을 보낸다.
+- 뉴스 게시자는 addNews() 메소드로 새로운 뉴스를 등록하고 getNews()로 최신 뉴스를 확인한 뒤 Observer에 전달한다.

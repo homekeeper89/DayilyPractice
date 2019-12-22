@@ -9,13 +9,14 @@ if __name__ == '__main__':
 
     for Subscribers in [SMSSubscriber, EmailSubscriber, AnyOtherSubscriber]:
         Subscribers(news_publisher)
-        print('\nSubscribers:', news_publisher.subscribers())
 
-        news_publisher.addNews('Hello World')
-        news_publisher.notifySubscribers()
+    print('\nSubscribers:', news_publisher.subscribers())
 
-        print('\nDetached:', type(news_publisher.detach()).__name__)
-        print('\nSubscrobers:', news_publisher.subscribers())
+    news_publisher.addNews('Hello World')
+    news_publisher.notifySubscribers()
 
-        news_publisher.addNews('My Second News')
-        news_publisher.notifySubscribers()
+    print('\nDetached:', type(news_publisher.detach()).__name__)
+    print('\nSubscrobers:', news_publisher.subscribers())
+
+    news_publisher.addNews('My Second News')
+    news_publisher.notifySubscribers()

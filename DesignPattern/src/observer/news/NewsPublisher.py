@@ -10,7 +10,7 @@ class NewsPublisher:
         return self.__subscribers.pop()
 
     def subscribers(self):
-        return [type(x).__name__ for x in self.__subscirbers]
+        return [type(x).__name__ for x in self.__subscribers]
     
     def notifySubscribers(self):
         for sub in self.__subscribers:
