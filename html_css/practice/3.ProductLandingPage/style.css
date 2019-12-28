@@ -1,0 +1,29 @@
+.landing-head, .landing-footer{
+  background-color:black;
+}
+
+.landing-head__navbar li, .landing-footer{
+  color:white;
+}
+.landing-head__navbar > li{
+  list-style-type: none;
+  /* float: right; */
+  display: inline;
+  padding:20px;
+}
+.landing-body__title {
+  text-align:center;
+  margin:30px;
+}
+.landing-body__contents{
+  display: flex;
+}
+
+.landing-body__contents--img{
+  margin-left: 5%;
+  width:50%;
+}
+
+.landing-footer{
+  height: 100px;
+}
