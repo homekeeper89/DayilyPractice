@@ -1,0 +1,51 @@
+.landing-head {
+    height: 100px;
+}
+
+.landing-head,
+.landing-footer {
+    background-color: black;
+}
+
+.landing-head__navbar li,
+.landing-footer {
+    color: white;
+}
+
+.landing-head__navbar>li {
+    list-style-type: none;
+    /* float: right; */
+    display: inline;
+    padding: 20px;
+}
+
+.landing-body__title {
+    text-align: center;
+    margin: 30px;
+}
+
+.landing-body__contents {
+    display: flex;
+}
+
+.landing-body__contents--img {
+    margin-left: 5%;
+    width: 50%;
+}
+
+.landing-footer {
+    text-align: center;
+    height: 20vh;
+    line-height: 20vh;
+}
+
+
+/* TODO : VH는 무엇인가 */
+
+
+/* 중앙정렬관련 참고 https://coderap.tistory.com/539 */
+
+.btn {
+    background-color: coral;
+    border-color: coral;
+}
