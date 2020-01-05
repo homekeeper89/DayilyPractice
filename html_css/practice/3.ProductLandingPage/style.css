@@ -6,6 +6,11 @@
     background-color: rgb(235, 202, 119);
 }
 
+.landing-head__navbar {
+    padding-top: 4%;
+    padding-left: 15%;
+}
+
 .landing-head,
 .landing-footer {
     background-color: black;
@@ -21,6 +26,10 @@
     /* float: right; */
     display: inline;
     padding: 20px;
+}
+
+.landing-body {
+    padding: 30px;
 }
 
 .landing-body__title {
