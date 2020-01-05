@@ -2,6 +2,11 @@
     height: 100px;
 }
 
+.landing-body {
+    background-color: rgb(235, 202, 119);
+    margin: 30px 0px 30px 0px;
+}
+
 .landing-head,
 .landing-footer {
     background-color: black;
@@ -21,7 +26,6 @@
 
 .landing-body__title {
     text-align: center;
-    margin: 30px;
 }
 
 .landing-body__contents {
@@ -32,6 +36,13 @@
     margin-left: 5%;
     width: 50%;
 }
+
+.landing-body__contents--intro div {
+    margin-bottom: 10px;
+}
+
+
+/* span에 margin을 지정합니다.(inline태그는 margin-top, margin-bottom속성이 적용되지않습니다.) */
 
 .landing-footer {
     text-align: center;
