@@ -4,7 +4,6 @@
 
 .landing-body {
     background-color: rgb(235, 202, 119);
-    margin: 30px 0px 30px 0px;
 }
 
 .landing-head,
@@ -30,6 +29,7 @@
 
 .landing-body__contents {
     display: flex;
+    margin-top: 30px;
 }
 
 .landing-body__contents--img {
